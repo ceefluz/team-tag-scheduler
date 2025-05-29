@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team‑Tag Scheduler</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- jsPDF für PDF‑Export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <!-- Login Overlay -->
+  <div id="loginOverlay" class="overlay">
+    <div class="card">
+      <h2>Login</h2>
+      <input type="password" id="pwInput" placeholder="Passwort" autofocus>
+      <button id="loginBtn" class="primary full">Anmelden</button>
+      <p id="loginMsg" class="warning" style="display:none">Falsches Passwort</p>
+    </div>
+  </div>
+
+
+  <header>
+    <h1>Team‑Tag Scheduler</h1>
+    <p>Wünsche zwischen <strong>11 : 00 – 12 : 00 Uhr</strong>, Dauer 5 oder 10 Minuten.</p>
+  </header>
+
+  <main>
+    <section class="input-area">
+      <table id="wishTable">
+        <thead>
+          <tr>
+            <th>Anfragende Person</th>
+            <th>Partner&nbsp;(Komma‑getrennt)</th>
+            <th>Dauer</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input required placeholder="Requester" /></td>
+            <td><input placeholder="Partner1,Partner2" /></td>
+            <td>
+              <select>
+                <option value="5">5</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="controls">
+        <button id="addRowBtn" class="secondary">Zeile hinzufügen</button>
+        <button id="computeBtn" class="primary">Plan erstellen</button>
+        <button id="downloadPdfBtn" class="primary" disabled>PDF speichern</button>
+        <button id="downloadDocBtn" class="primary" disabled>Word speichern</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Gesamt‑Plan</h2>
+      <pre id="output"></pre>
+
+      <h2>Übersicht pro Person</h2>
+      <pre id="overview"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 Team‑Tag Scheduler</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
